@@ -25,11 +25,14 @@ import java.util.List;
 @RestController
 public class ChatController {
 
-    @Autowired
     private UserRepository userRepository;
+    private MessageRepository messageRepository;
 
     @Autowired
-    private MessageRepository messageRepository;
+    public ChatController(UserRepository userRepository, MessageRepository messageRepository) {
+        this.userRepository = userRepository;
+        this.messageRepository = messageRepository;
+    }
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd.MM.yyyy");
 
